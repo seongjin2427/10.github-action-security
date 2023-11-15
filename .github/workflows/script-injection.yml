@@ -1,0 +1,19 @@
+name: Label Issues (Script Injection Example)
+on:
+  issues:
+    types:
+      - opened
+jobs:
+  assign-label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Assign label
+        # github 컨텍스트에서 issue의 title을 변수에 할당하고
+        # 그 변수(issue_title)이 "bug"인지에 따라 출력이 달라집니다.
+        run: |
+          issue_title="${{ github.event.issue.title }}"
+          if [[ "$issue_title" == *"bug"* ]]; then
+          echo "Issue is about a bug!"
+          else
+          echo "Issue is not about a bug"
+          fi
