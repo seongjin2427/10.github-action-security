@@ -1,5 +1,6 @@
 name: Label Issues (Script Injection Example)
 on:
+  # Issue가 열릴 때, 워크플로우가 동작합니다.
   issues:
     types:
       - opened
