@@ -47,7 +47,7 @@
   - Issue 제목만으로도 GitHub Action에서 의도하지 않았던 쉘 명령얼르 실행할 수 있습니다.
   - `Run issue_title="a";` 실행 후, `Got your secrets`를 출력합니다.'
 
-2. 이러한 방식의 Script Injection을 막기 위해서, 컨텍스트의 참조 값을 별도의 환경변수로 할당하고, 러너의 터미널에서는 해당 환경변수만을 사용하여 실행합니다. - a
+2. 이러한 방식의 Script Injection을 막기 위해서, 컨텍스트의 참조 값을 별도의 환경변수로 할당하고, 러너의 터미널에서는 해당 환경변수만을 사용하여 실행합니다. - [`b0534ea8`](https://github.com/seongjin2427/10.githut-action-security/commit/b0534ea8378108220447827a3cc0ed8afbd8e37c)
 
 - Process
   - `script-injection.yml`
@@ -74,4 +74,4 @@
                 fi
 
 - Result
-  - 
+  - Issue의 제목을 통해 Script Injection을 시도하더라도 동작하지 않습니다.
