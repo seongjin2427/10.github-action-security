@@ -1,6 +1,5 @@
 name: Label Issues (Script Injection Example)
 on:
-  # Issue가 열릴 때, 워크플로우가 동작합니다.
   issues:
     types:
       - opened
@@ -9,11 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Assign label
-        # github 컨텍스트에서 issue의 title을 변수에 할당하고
-        # 그 변수(issue_title)이 "bug"인지에 따라 출력이 달라집니다.
+        # env 키를 통해 별도의 환경변수로 참조값을 할당하여
+        # 러너의 터미널에서 참조 값을 쉘 스크립트로 실행하지 못하도록 합니다.
+        env:
+          TITLE: ${{ github.event.issue.title }}
         run: |
-          issue_title="${{ github.event.issue.title }}"
-          if [[ "$issue_title" == *"bug"* ]]; then
+          if [[ "$TITLE" == *"bug"* ]]; then
           echo "Issue is about a bug!"
           else
           echo "Issue is not about a bug"
