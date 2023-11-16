@@ -5,6 +5,11 @@ on:
       - opened
 jobs:
   assign-label:
+  # Action이나 Job 단위로 지정할 수 있습니다.
+    permissions: 
+      # 이슈에 대해서 쓰기만/읽기만/모두 불가 를 지정할 수 있습니다.
+      # 여기에 작성된 이벤트에 대한 권한만 부여됩니다.
+      issues: write
     runs-on: ubuntu-latest
     steps:
       - name: Assign label

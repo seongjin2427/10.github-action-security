@@ -1,7 +1,5 @@
 # GitHub Actions Security & Permissions
 
----
-
 ## Security Problems
 
 - Script Injection
@@ -75,3 +73,42 @@
 
 - Result
   - Issue의 제목을 통해 Script Injection을 시도하더라도 동작하지 않습니다.
+
+<br>
+
+---
+## Permissions
+
+1. `permissions` 키를 지정하여, 추가 레이어를 통해 특정 이벤트에 대한 한정된 권한을 부여함으로써 보안을 더 강화 할 수 있습니다. - 
+
+- Process
+  - `label-issues-real.yml`
+    - ```yml
+      name: Label Issues (Permissions Example)
+      on:
+        issues:
+          types:
+            - opened
+      jobs:
+        assign-label:
+        # Action이나 Job 단위로 지정할 수 있습니다.
+          permissions: 
+            # 이슈에 대해서 쓰기만/읽기만/모두 불가 를 지정할 수 있습니다.
+            # 여기에 작성된 이벤트에 대한 권한만 부여됩니다.
+            issues: write
+          runs-on: ubuntu-latest
+          steps:
+            - name: Assign label
+              if: contains(github.event.issue.title, 'bug')
+              run: |
+                curl -X POST \
+                --url https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/labels \
+                -H 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+                -H 'content-type: application/json' \
+                -d '{
+                    "labels": ["bug"]
+                  }' \
+                --fail
+
+- Result
+  - 
