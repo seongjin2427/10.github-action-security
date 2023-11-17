@@ -79,7 +79,7 @@
 ---
 ## Permissions
 
-1. `permissions` 키를 지정하여, 추가 레이어를 통해 특정 이벤트에 대한 한정된 권한을 부여함으로써 보안을 더 강화 할 수 있습니다. - 
+1. `permissions` 키를 지정하여, 추가 레이어를 통해 특정 이벤트에 대한 한정된 권한을 부여함으로써 보안을 더 강화 할 수 있습니다. - [`af4367cb`](https://github.com/seongjin2427/10.githut-action-security/commit/af4367cbaf27b81be2f694760a45062cc9a5ce49)
 
 - Process
   - `label-issues-real.yml`
@@ -111,4 +111,8 @@
                 --fail
 
 - Result
-  - 
+  - 작동에는 큰 차이가 없지만, 좀 더 안전한 보안을 가지게 됩니다.
+
+<br>
+
+---
