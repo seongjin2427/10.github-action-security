@@ -113,6 +113,21 @@
 - Result
   - 작동에는 큰 차이가 없지만, 좀 더 안전한 보안을 가지게 됩니다.
 
-<br>
+2. `permissions`를 실제 Step에서 실행하는 것과 다르게 지정하여 일부러 실패해 봅시다. - 
 
----
+- `${{ secrets.GITHUB_TOKEN ]}`
+  - `secrets`으로 `GITHUB_TOKEN`를 지정하지 않았지만 참조가 됩니다.
+  - GitHub에서 `permissions`에 해당하는 권한의 토큰을 자동으로 생성하여 `secrets.GITHUB_TOKEN`에 할당합나디.
+
+- Process
+  - `workflows/label-issues-real.yml`
+    - ```yml
+      ...
+        permissions:
+          issues: read
+        ...
+
+  - 다시 "bug" 단어를 포함해 Issue를 Open합니다.
+
+- Result
+  - 
