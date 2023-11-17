@@ -113,7 +113,7 @@
 - Result
   - 작동에는 큰 차이가 없지만, 좀 더 안전한 보안을 가지게 됩니다.
 
-2. `permissions`를 실제 Step에서 실행하는 것과 다르게 지정하여 일부러 실패해 봅시다. - 
+2. `permissions`를 실제 Step에서 실행하는 것과 다르게 지정하여 일부러 실패해 봅시다. - [`d571268b`](https://github.com/seongjin2427/10.githut-action-security/commit/d571268b38e2b8d800170721d1a58690b93356c3)
 
 - `${{ secrets.GITHUB_TOKEN ]}`
   - `secrets`으로 `GITHUB_TOKEN`를 지정하지 않았지만 참조가 됩니다.
@@ -130,4 +130,8 @@
   - 다시 "bug" 단어를 포함해 Issue를 Open합니다.
 
 - Result
-  - 
+  - `Assign label` Step의 `run` 명령어들은 문제가 없으나, 주어진 `permissions` - `issues: read` 권한에 맞지 않는 Step으로 워크플로우는 중단됩니다.
+
+<br>
+
+---
